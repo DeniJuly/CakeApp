@@ -1,10 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:magandhy_cake/pages/home.dart';
 
 void main() => runApp(MaterialApp(
   home: MyApp(),
   debugShowCheckedModeBanner: false,
+  theme: ThemeData(
+    fontFamily: 'Quicksand'
+  ),
 ));
 
 class MyApp extends StatefulWidget {
@@ -24,10 +29,25 @@ class _MyAppState extends State<MyApp> {
   );
   SnakeBarBehaviour snakeBarStyle = SnakeBarBehaviour.floating;
   Color selectedColor = Colors.black;
+  List _PageView = [
+    Home(),
+    Text('Hallo 2'),
+    Text('Hallo 3'),
+    Text('Hallo 4'),
+  ];
+
+  onPageChange(val){
+    this.setState(() {
+      _selectedItemPosition = val;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        body: SafeArea(
+          child: _PageView[_selectedItemPosition],
+        ),
         bottomNavigationBar: SnakeNavigationBar.color(
           behaviour: snakeBarStyle,
           snakeShape: snakeShape,
@@ -43,12 +63,32 @@ class _MyAppState extends State<MyApp> {
           showSelectedLabels: false,
 
           currentIndex: _selectedItemPosition,
-          onTap: (index) => setState(() => _selectedItemPosition = index),
+          onTap: (index) => setState(() => _selectedItemPosition = index ),
           items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'tickets'),
-            BottomNavigationBarItem(icon: Icon(Icons.shopping_bag), label: 'calendar'),
-            BottomNavigationBarItem(icon: Icon(Icons.favorite), label: 'home'),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'microphone')
+            BottomNavigationBarItem(
+                icon: _selectedItemPosition==0?
+                  new SvgPicture.asset('assets/icons/home-active.svg') :
+                  new SvgPicture.asset('assets/icons/home.svg'),
+                label: 'Home'
+            ),
+            BottomNavigationBarItem(
+                icon: _selectedItemPosition==1?
+                  new SvgPicture.asset('assets/icons/shop-active.svg') :
+                  new SvgPicture.asset('assets/icons/shop.svg'),
+                label: 'Shop'
+            ),
+            BottomNavigationBarItem(
+                icon: _selectedItemPosition==2?
+                new SvgPicture.asset('assets/icons/love-active.svg') :
+                new SvgPicture.asset('assets/icons/love.svg'),
+                label: 'Shop'
+            ),
+            BottomNavigationBarItem(
+                icon: _selectedItemPosition==3?
+                new SvgPicture.asset('assets/icons/profile-active.svg') :
+                new SvgPicture.asset('assets/icons/profile.svg'),
+                label: 'Shop'
+            ),
           ],
         )
     );
