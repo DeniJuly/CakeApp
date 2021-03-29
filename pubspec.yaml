@@ -26,6 +26,7 @@ dependencies:
   flutter_snake_navigationbar: ^0.4.4
   flutter_svg: ^0.18.0
   carousel_slider: ^3.0.0
+  flutter_statusbarcolor: ^0.2.3
 
 
   # The following adds the Cupertino Icons font to your application.

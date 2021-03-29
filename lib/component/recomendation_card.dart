@@ -19,13 +19,15 @@ class RecomendationCard extends StatelessWidget {
             Stack(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
+                  padding:
+                      const EdgeInsets.only(left: 10.0, top: 10.0, right: 10.0),
                   child: SizedBox(
                     width: 105,
                     height: 105,
-                    child:  ClipRRect(
+                    child: ClipRRect(
                       borderRadius: BorderRadius.all(Radius.circular(5)),
-                      child: Image.asset(image,
+                      child: Image.asset(
+                        image,
                         fit: BoxFit.cover,
                         width: 105,
                         height: 105,
@@ -42,36 +44,44 @@ class RecomendationCard extends StatelessWidget {
                       child: Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
-                            color: Color(0xffF6F6F6)
-                        ),
+                            color: Color(0xffF6F6F6)),
                         width: 30,
                         height: 30,
-                        child: Icon(Icons.favorite, size: 20, color: Color(0xffE8E8E8),),
+                        child: Icon(
+                          Icons.favorite,
+                          size: 20,
+                          color: Color(0xffE8E8E8),
+                        ),
                       ),
-                    )
-                )
+                    ))
               ],
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
               child: Column(
                 children: [
-                  Text(title, style: TextStyle(
-                      fontSize: 15,
-                      fontWeight: FontWeight.w500
-                  ),),
-                  SizedBox(height: 5,),
+                  Text(
+                    title,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
+                  ),
+                  SizedBox(
+                    height: 5,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(price, style: TextStyle(
-                          fontSize: 12,
-                          color: Color(0xffFDB827)
-                      ),),
-                      Text(rate, style: TextStyle(
-                          fontSize: 12,
-                          color: Color(0xffFDB827)
-                      ),),
+                      Text(
+                        price,
+                        style:
+                            TextStyle(fontSize: 12, color: Color(0xffFDB827)),
+                      ),
+                      Text(
+                        rate,
+                        style:
+                            TextStyle(fontSize: 12, color: Color(0xffFDB827)),
+                      ),
                     ],
                   )
                 ],
